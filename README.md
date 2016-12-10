@@ -17,7 +17,9 @@ $ ./bin/schema-registry-start ./etc/schema-registry/schema-registry.properties &
 
 Verify that you are in `schema-evolution` directory and run:
 
-```schema-registry-playground/schema-evolution$ mvn compile exec:java -Dexec.mainClass="kafka.ProduceMessageToSend" ```
+```
+schema-registry-playground/schema-evolution$ mvn compile exec:java -Dexec.mainClass="kafka.ProduceMessageToSend"
+```
 
 You should see something similar to:
 ```
@@ -29,7 +31,9 @@ You should see something similar to:
 
 Verify that you are in `schema-registry` directory and run:
 
-```schema-registry-playground/schema-registry$ mvn compile exec:java -Dexec.mainClass="kafka.ReceiveMessageToSendNewVersion"```
+```
+schema-registry-playground/schema-registry$ mvn compile exec:java -Dexec.mainClass="kafka.ReceiveMessageToSendNewVersion"
+```
 
 You should see something similar to:
 ```
