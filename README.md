@@ -23,8 +23,9 @@ schema-registry-playground/schema-evolution$ mvn compile exec:java -Dexec.mainCl
 
 You should see something similar to:
 ```
-[2016-12-10 14:25:41,454 kafka.ProduceMessageToSend] INFO Sent: {"type": "com.ludwikowski.schema.MessageToSend", "correlationId": "a004124f-d690-4abe-8255-f076ef77710d", "payload": {"addressTo": "addressTo1", "title": "title1", "text": "text1"}}
-[2016-12-10 14:25:41,456 kafka.ProduceMessageToSend] INFO Sent: {"type": "com.ludwikowski.schema.MessageToSend", "correlationId": "b4e24693-9ede-467c-897a-9a4c9bfa4956", "payload": {"addressTo": "addressTo2", "title": "title2", "text": "text2"}}
+[2016-12-11 09:30:51,691 kafka.ProduceMessageToSend] INFO Sent: {"type": "com.ludwikowski.schema.Sms", "correlationId": "0ccbd77b-62a9-4d50-912f-6a6b98644823", "payload": {"phoneNumber": "123123123", "text": "hello"}}
+[2016-12-11 09:30:51,694 kafka.ProduceMessageToSend] INFO Sent: {"type": "com.ludwikowski.schema.Email", "correlationId": "b287095a-e73f-40d4-974f-5577344d1837", "payload": {"addressTo": "addressTo1", "title": "title1", "text": "text1"}}
+[2016-12-11 09:30:51,696 kafka.ProduceMessageToSend] INFO Sent: {"type": "com.ludwikowski.schema.Email", "correlationId": "67d9a4b8-6004-4b04-9226-28fb2494f40e", "payload": {"addressTo": "addressTo2", "title": "title2", "text": "text2"}}
 ```
 
 # Consume the new version of MessageToSend
@@ -37,8 +38,9 @@ schema-registry-playground/schema-registry$ mvn compile exec:java -Dexec.mainCla
 
 You should see something similar to:
 ```
-[2016-12-10 14:26:11,342 kafka.ReceiveMessageToSendNewVersion] INFO Received the new version of MessageToSend: {"type": "com.ludwikowski.schema.MessageToSend", "correlationId": "a004124f-d690-4abe-8255-f076ef77710d", "payload": {"addressFrom": "andrzej@test.pl", "addressTo": "addressTo1", "title": "title1", "text": "text1"}}
-[2016-12-10 14:26:11,342 kafka.ReceiveMessageToSendNewVersion] INFO Received the new version of MessageToSend: {"type": "com.ludwikowski.schema.MessageToSend", "correlationId": "b4e24693-9ede-467c-897a-9a4c9bfa4956", "payload": {"addressFrom": "andrzej@test.pl", "addressTo": "addressTo2", "title": "title2", "text": "text2"}}
+[2016-12-11 09:31:30,241 kafka.ReceiveMessageToSendNewVersion] INFO Received the new version of MessageToSend: {"type": "com.ludwikowski.schema.Sms", "correlationId": "0ccbd77b-62a9-4d50-912f-6a6b98644823", "payload": {"phoneNumber": "123123123", "text": "hello"}}
+[2016-12-11 09:31:30,241 kafka.ReceiveMessageToSendNewVersion] INFO Received the new version of MessageToSend: {"type": "com.ludwikowski.schema.Email", "correlationId": "b287095a-e73f-40d4-974f-5577344d1837", "payload": {"addressFrom": "andrzej@test.pl", "addressTo": "addressTo1", "title": "title1", "text": "text1"}}
+[2016-12-11 09:31:30,241 kafka.ReceiveMessageToSendNewVersion] INFO Received the new version of MessageToSend: {"type": "com.ludwikowski.schema.Email", "correlationId": "67d9a4b8-6004-4b04-9226-28fb2494f40e", "payload": {"addressFrom": "andrzej@test.pl", "addressTo": "addressTo2", "title": "title2", "text": "text2"}}
 ```
 
 In this approach a schema is provided in form of an Avro schema file, which is translated into a class file, which then can be used to create objects, either via constructors or builders.
